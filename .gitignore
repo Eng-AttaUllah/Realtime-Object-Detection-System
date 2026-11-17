@@ -1,0 +1,18 @@
+# venv stuff
+.venv/
+
+# python junk
+__pycache__/
+*.pyc
+
+# annotated output images, we can regenerate them
+dataset/results/
+
+# model weights are big, yolov8n downloads itself on first run
+*.pt
+
+# streamlit stuff
+.streamlit/
+
+# kaggle/jupyter junk
+.ipynb_checkpoints/

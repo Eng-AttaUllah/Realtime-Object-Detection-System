@@ -1,0 +1,10 @@
+# dataset config for my 9 custom classes
+# images came from roboflow, re-split locally into 305/35/17
+
+path: /home/attaullah/Projects/Real Time Object Detection/dataset_custom
+train: train/images
+val: valid/images
+test: test/images
+
+nc: 9
+names: ['bottle', 'calculator', 'cube', 'flower', 'gamepad', 'keyboard', 'mouse', 'mug', 'stapler']

@@ -28,10 +28,12 @@ def main():
     parser = argparse.ArgumentParser(description="run yolov8 on an image")
     parser.add_argument("--image", required=True, help="path to the image")
     parser.add_argument("--conf", type=float, default=0.4, help="confidence threshold")
+    # default is my custom trained model, pass --model model/yolov8n.pt for the 80 class coco one
+    parser.add_argument("--model", default="model/object_model.pt", help="which weights to use")
     parser.add_argument("--show", action="store_true", help="open a window with the result (needs a display)")
     args = parser.parse_args()
 
-    model = YOLO("model/yolov8n.pt")
+    model = YOLO(args.model)
 
     img = cv2.imread(args.image)
     if img is None:

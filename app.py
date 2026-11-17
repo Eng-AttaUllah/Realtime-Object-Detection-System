@@ -12,19 +12,21 @@ from ultralytics import YOLO
 
 # load the model only once instead of on every rerun, app was slow without this
 @st.cache_resource
-def load_model():
-    return YOLO("model/yolov8n.pt")
+def load_model(weights):
+    return YOLO(weights)
 
 
-model = load_model()
+# sidebar controls
+conf = st.sidebar.slider("confidence threshold", 0.05, 0.95, 0.4, 0.05)
+which = st.sidebar.radio("model", ["custom (9 classes)", "pretrained (80 classes)"])
+weights = "model/object_model.pt" if which.startswith("custom") else "model/yolov8n.pt"
+model = load_model(weights)
 
 st.title("Real Time Object Recognition")
 st.write("detect objects in images, videos or the webcam using yolov8")
 
-# sidebar controls
-conf = st.sidebar.slider("confidence threshold", 0.05, 0.95, 0.4, 0.05)
 source = st.sidebar.radio("choose input", ["Image", "Video", "Webcam"])
-st.sidebar.write(f"model: yolov8n (coco, 80 classes)")
+st.sidebar.write(f"loaded: {weights}")
 
 # ------------------------------------------------ image mode
 if source == "Image":

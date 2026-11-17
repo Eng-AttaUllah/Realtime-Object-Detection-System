@@ -11,6 +11,11 @@ dataset/results/
 # model weights are big, yolov8n downloads itself on first run
 *.pt
 
+# training runs and the original roboflow export (dataset_custom has the clean copy)
+runs/
+Object Detection Dataset/
+labels.cache
+
 # streamlit stuff
 .streamlit/
 

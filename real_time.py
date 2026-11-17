@@ -10,12 +10,15 @@ from ultralytics import YOLO
 # conf 0.4 works ok for webcam since frames are blurry compared to photos
 CONF = 0.4
 
+# my custom model, swap for model/yolov8n.pt if you want the 80 coco classes
+MODEL = "model/object_model.pt"
+
 cap = cv2.VideoCapture(0)
 if not cap.isOpened():
     print("could not open the webcam")
     raise SystemExit
 
-model = YOLO("model/yolov8n.pt")
+model = YOLO(MODEL)
 
 # using 480p and imgsz 480 to keep the fps reasonable on cpu
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
